@@ -251,7 +251,7 @@ history -c
 curl -sS ifconfig.me > /etc/myipvps
 
 echo " "
-echo "====================-[ KennXV Premium ]-===================="
+echo "====================-[ hide Premium ]-===================="
 echo ""
 echo "------------------------------------------------------------"
 echo ""  | tee -a log-install.txt
