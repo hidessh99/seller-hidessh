@@ -113,20 +113,6 @@ echo -e "[ ${green}INFO${NC} ] Preparing the install file"
 apt install git curl -y >/dev/null 2>&1
 echo -e "[ ${green}INFO${NC} ] Aight good ... installation file is ready"
 sleep 2
-echo -ne "[ ${green}INFO${NC} ] Check permission : "
-
-PERMISSION
-if [ -f /home/needupdate ]; then
-red "Your script need to update first !"
-exit 0
-elif [ "$res" = "Permission Accepted..." ]; then
-green "Permission Accepted!"
-else
-red "Permission Denied!"
-rm setup.sh > /dev/null 2>&1
-sleep 10
-exit 0
-fi
 sleep 3
 
 mkdir -p /etc/alexxa
@@ -230,6 +216,7 @@ sleep 1
 
 wget https://raw.githubusercontent.com/SSHSEDANG4/multiws/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 clear
+
 wget https://raw.githubusercontent.com/kenDevXD/multiws/main/websocket/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
 echo -e "$green[INFO]$NC Download Extra Menu"
@@ -261,16 +248,6 @@ if [ ! -f "/etc/log-create-user.log" ]; then
 echo "Log All Account " > /etc/log-create-user.log
 fi
 history -c
-serverV=$( curl -sS https://raw.githubusercontent.com/kenDevXD/permission/main/version  )
-echo $serverV > /opt/.ver
-aureb=$(cat /home/re_otm)
-b=11
-if [ $aureb -gt $b ]
-then
-gg="PM"
-else
-gg="AM"
-fi
 curl -sS ifconfig.me > /etc/myipvps
 
 echo " "
@@ -324,6 +301,7 @@ rm /root/cf.sh >/dev/null 2>&1
 rm /root/setup.sh >/dev/null 2>&1
 rm /root/insshws.sh 
 rm /root/update.sh
+rm /root/set-br.sh
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e "
 "
